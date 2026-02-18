@@ -64,16 +64,26 @@ pip install -r requirements.txt
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-### 3. Set up Gmail credentials
+### 3. Google Cloud Project & Gmail API
 
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Enable the **Gmail API**
-3. Create OAuth 2.0 credentials → Desktop App
-4. Download and rename to `credentials.json`, place in project root
+Follow these exact steps to enable the agent to access your Gmail:
 
-> ⚠️ First run will open a browser for Gmail authorization. A `token.json` will be created automatically.
+1. **Create a Project** — Go to [Google Cloud Console](https://console.cloud.google.com/) and create a new project.
 
-> ⚠️ To run this project, you must be added as a Test User in the Google Cloud Console OAuth consent screen. Contact the project owner to be added.
+2. **Enable API** — Navigate to **APIs & Services > Library**, search for **Gmail API**, and click **Enable**.
+
+3. **OAuth Consent Screen**
+   - Go to **APIs & Services > OAuth consent screen**
+   - Select **External** and fill in the required app details
+   - **Test Users (Required):** Under "Test users", click **+ ADD USERS** and add the Gmail address you will use for testing. Without this, you will receive an "Access Blocked" error.
+
+4. **Create Credentials**
+   - Go to **APIs & Services > Credentials**
+   - Click **+ CREATE CREDENTIALS > OAuth client ID**
+   - Select **Application type: Desktop App**
+   - Download the JSON file, rename it to `credentials.json`, and place it in the project root
+
+On first run, a browser will open automatically asking you to authorize Gmail access. A `token.json` will be created automatically — no further steps needed.
 
 ---
 
